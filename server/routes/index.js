@@ -6,7 +6,7 @@ router.get("/", function(req, res) {
 		message: "Welcome to EpiMood crafted with love!"
 	});
 });
-var userController = require("../controllers/userController");
+const userController = require("../controllers/userController");
 
 router
 	.route("/users")

@@ -1,12 +1,12 @@
-let express = require("express");
-let bodyParser = require("body-parser");
-let mongoose = require("mongoose");
-let jwt = require("jsonwebtoken");
-let fs = require("fs");
+const express = require("express");
+const bodyParser = require("body-parser");
+const mongoose = require("mongoose");
+const jwt = require("jsonwebtoken");
+const fs = require("fs");
 
-let app = express();
+const app = express();
 
-let apiRoutes = require("./routes/index");
+const apiRoutes = require("./routes/index");
 
 app.use(
 	bodyParser.urlencoded({
@@ -17,8 +17,8 @@ app.use(bodyParser.json());
 
 mongoose.connect("mongodb://localhost/epimood");
 
-var db = mongoose.connection;
-var port = process.env.PORT || 8080;
+const db = mongoose.connection;
+const port = process.env.PORT || 8080;
 
 app.get("/", (req, res) => res.send("Hello World with Express"));
 
