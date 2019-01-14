@@ -1,6 +1,8 @@
 let express = require("express");
 let bodyParser = require("body-parser");
 let mongoose = require("mongoose");
+let jwt = require("jsonwebtoken");
+let fs = require("fs");
 
 let app = express();
 

@@ -1,7 +1,9 @@
-let jwt = require("express-jwt");
-User = require("../models/userModel");
+const jwt = require("jsonwebtoken");
+const nodemailer = require("nodemailer");
+const User = require("../models/userModel");
 
 exports.index = function(req, res) {
+	console.log("index");
 	User.get(function(err, users) {
 		if (err) {
 			res.status(500).json(err);
@@ -17,6 +19,7 @@ exports.new = function(req, res) {
 	let user = new User();
 	user.email = req.body.email;
 	user.admin = req.body.admin;
+	user.token = jwt.sign({ _id: user._id }, process.env.SECRET_KEY);
 	user.save(function(err) {
 		if (err) {
 			if (err.name === "MongoError" && err.code === 11000) {
@@ -55,6 +58,7 @@ exports.update = function(req, res) {
 		}
 		user.email = req.body.email;
 		user.admin = req.body.admin;
+		user.token = jwt.sign({ _id: user._id }, process.env.SECRET_KEY);
 		user.save(function(err) {
 			if (err) {
 				if (err.name === "MongoError" && err.code === 11000) {
@@ -85,5 +89,41 @@ exports.delete = function(req, res) {
 			});
 		}
 	);
-	exports.login = function(req, res) {};
+};
+
+exports.login = function(req, res) {
+	User.findOne({ "user.email": req.params.email }, function(err, user) {
+		if (user) {
+			user.token = jwt.sign({ _id: user._id }, process.env.SECRET_KEY);
+			user.save();
+		} else {
+			user = new User();
+			user.email = req.body.email;
+			user.token = jwt.sign({ _id: user._id }, process.env.SECRET_KEY);
+			user.save();
+		}
+		var transporter = nodemailer.createTransport({
+			service: "gmail",
+			auth: {
+				user: process.env.GMAIL,
+				pass: process.env.GMAIL_PASS
+			}
+		});
+
+		var mailOptions = {
+			from: process.env.GMAIL,
+			to: process.env.GMAIL, //TODO CHANGE TO USER EMAIL
+			subject: "EpiMood - AutoLogin Link",
+			text: process.env.CLIENT_URL + "/" + user.token
+		};
+
+		transporter.sendMail(mailOptions, function(error, info) {
+			if (error) {
+				res.status(500).json({ message: "Email service not available" });
+			} else {
+				console.log("Email sent: " + info.response);
+			}
+		});
+		return res.status(200).json({ message: "Email sent with Autologin !" });
+	});
 };
