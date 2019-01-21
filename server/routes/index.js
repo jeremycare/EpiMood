@@ -1,23 +1,41 @@
-const router = require("express").Router();
-const permission = require("../utils/permissions");
+const router = require('express').Router()
+const permission = require('../utils/permissions')
 
-router.get("/", function(req, res) {
+const userController = require('../controllers/userController')
+const activityControler = require('../controllers/activityControler')
+
+router.get('/', function(req, res) {
 	res.status(200).json({
-		message: "Welcome to EpiMood crafted with love!"
-	});
-});
-const userController = require("../controllers/userController");
+		message: 'Welcome to EpiMood crafted with love!',
+	})
+})
 
 router
-	.route("/users")
-	.get(permission.permission(true), userController.index)
-	.post(permission.permission(true), userController.new);
+	.route('/users')
+	.get(permission.permission(), userController.index)
+	.post(permission.permission(), userController.new)
 router
-	.route("/users/:user_id")
+	.route('/users/:user_id')
 	.get(permission.permission(), userController.view)
 	.patch(permission.permission(), userController.update)
 	.put(permission.permission(), userController.update)
-	.delete(permission.permission(), userController.delete);
-router.route("/login").post(userController.login);
+	.delete(permission.permission(), userController.delete)
 
-module.exports = router;
+router.route('/login').post(userController.login)
+
+router
+	.route('/activities')
+	.get(permission.permission(), activityControler.index)
+	.post(permission.permission(), activityControler.new)
+router
+	.route('/activities/:activity_id')
+	.get(permission.permission(), activityControler.view)
+	.patch(permission.permission(), activityControler.update)
+	.put(permission.permission(), activityControler.update)
+	.delete(permission.permission(), activityControler.delete)
+
+router
+	.route('/activities/:activity_id/feedback')
+	.post(permission.permission(), activityControler.feedback)
+
+module.exports = router

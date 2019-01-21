@@ -1,0 +1,21 @@
+{
+  "name": "server-epimood",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "cron": "^1.6.0",
+    "express": "^4.16.4",
+    "jsonwebtoken": "^8.4.0",
+    "mongoose": "^5.4.1",
+    "node-cron": "^2.0.3",
+    "nodemailer": "^5.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+  },
+  "author": "care_j",
+  "license": "MIT"
+}

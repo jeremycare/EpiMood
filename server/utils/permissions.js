@@ -1,9 +1,10 @@
-const jwt = require("jsonwebtoken");
-const User = require("../models/userModel");
+const jwt = require('jsonwebtoken');
+const User = require('../models/userModel');
 
 exports.permission = function(admin) {
 	return (req, res, next) => {
-		const apiKey = req.get("Api-Key");
+		const apiKey = req.get('Api-Key');
+		console.log(apiKey);
 		if (apiKey === undefined) {
 			res.status(401).end();
 			return;
@@ -14,16 +15,18 @@ exports.permission = function(admin) {
 					res.status(401).end();
 					return;
 				} else {
+					console.log(User.findById);
 					User.findById(decoded._id, function(err, user) {
 						if (err) {
 							res.status(500).json(err);
 							return;
 						}
 						if (!user || apiKey !== user.token) {
-							res.status(401).json({ message: "Invalid Token" });
+							res.status(401).json({ message: 'Invalid Token' });
 							return;
 						}
 						if (admin && admin !== user.admin) {
+							console.log(admin, user.admin);
 							res.status(403).end();
 							return;
 						}
@@ -32,8 +35,8 @@ exports.permission = function(admin) {
 					});
 				}
 			} catch (e) {
-				res.status(401);
-				return;
+				console.log(e);
+				return res.status(401);
 			}
 		}
 	};
