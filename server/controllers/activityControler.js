@@ -4,15 +4,9 @@ const User = require('../models/userModel')
 const UserController = require('../controllers/userController')
 
 const index = (req, res) => {
-	Activity.find((err, activities) => {
-		if (err) {
-			res.status(500).json(err)
-			return
-		}
-		res.status(200).json({
-			message: 'Activities retrieved successfully',
-			data: activities,
-		})
+	res.status(200).json({
+		message: 'Activities retrieved successfully',
+		data: req.activities,
 	})
 }
 
