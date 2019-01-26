@@ -3,6 +3,7 @@ const permission = require('../utils/permissions')
 
 const userController = require('../controllers/userController')
 const activityControler = require('../controllers/activityControler')
+const activityMiddleware = require('../middlewares/activityMiddelware')
 
 router.get('/', function(req, res) {
 	res.status(200).json({
@@ -12,27 +13,31 @@ router.get('/', function(req, res) {
 
 router
 	.route('/users')
-	.get(permission.permission(), userController.index)
-	.post(permission.permission(), userController.new)
+	.get(permission.permission(true), userController.index)
+	.post(permission.permission(true), userController.new)
 router
 	.route('/users/:user_id')
-	.get(permission.permission(), userController.view)
-	.patch(permission.permission(), userController.update)
-	.put(permission.permission(), userController.update)
-	.delete(permission.permission(), userController.delete)
+	.get(permission.permission(true), userController.view)
+	.patch(permission.permission(true), userController.update)
+	.put(permission.permission(true), userController.update)
+	.delete(permission.permission(true), userController.delete)
 
 router.route('/login').post(userController.login)
 
 router
 	.route('/activities')
-	.get(permission.permission(), activityControler.index)
-	.post(permission.permission(), activityControler.new)
+	.get(
+		permission.permission(),
+		activityMiddleware.filterAdminActivity(),
+		activityControler.index
+	)
+	.post(permission.permission(true), activityControler.new)
 router
 	.route('/activities/:activity_id')
-	.get(permission.permission(), activityControler.view)
-	.patch(permission.permission(), activityControler.update)
-	.put(permission.permission(), activityControler.update)
-	.delete(permission.permission(), activityControler.delete)
+	.get(permission.permission(true), activityControler.view)
+	.patch(permission.permission(true), activityControler.update)
+	.put(permission.permission(true), activityControler.update)
+	.delete(permission.permission(true), activityControler.delete)
 
 router
 	.route('/activities/:activity_id/feedback')
