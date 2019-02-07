@@ -15,6 +15,7 @@
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "SECRET_KEY='gynYTqTGucRr4NPpGKpK' GMAIL='epimood.mpl@gmail.com' GMAIL_PASS='toto42sh' CLIENT_URL='https://localhost:8080' nodemon server.js"
   },
   "author": "care_j",
   "license": "MIT"
