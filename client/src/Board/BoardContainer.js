@@ -1,10 +1,11 @@
 import { connect } from 'react-redux'
-import NavBar from './NavBar'
+
 import { tokenSelectors } from '../selectors'
+import Board from './Board'
 
 const mapStateToProps = state => {
 	return {
-		token: tokenSelectors.tokenSelector(state),
+		state: tokenSelectors.tokenSelector(state),
 	}
 }
 
@@ -17,4 +18,4 @@ const mapDispatchToProps = dispatch => {
 export default connect(
 	mapStateToProps,
 	mapDispatchToProps
-)(NavBar)
+)(Board)

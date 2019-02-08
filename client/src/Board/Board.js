@@ -1,7 +1,20 @@
 import React from 'react'
+import { useEffect } from 'react'
 
-const Board = () => {
-	return <div>Board here</div>
+import { tokenActions } from '../actions'
+import NavBarContainer from '../NavBar/NavBarContainer'
+
+const Board = props => {
+	console.log(props)
+	useEffect(() => {
+		return props.dispatch(tokenActions.updateToken(props.match.params.id))
+	}, [])
+	return (
+		<div className="Board">
+			<NavBarContainer />
+			<div>{props.state ? props.state.token : ''}</div>
+		</div>
+	)
 }
 
 export default Board

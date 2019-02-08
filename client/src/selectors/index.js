@@ -1,3 +1,3 @@
 module.exports = {
-	tokenSelector: require('./tokenSelector'),
+	tokenSelectors: require('./tokenSelector'),
 }

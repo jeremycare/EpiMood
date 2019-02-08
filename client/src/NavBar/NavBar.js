@@ -15,7 +15,6 @@ const Navbar = props => {
 				return
 		}
 	}
-
 	return (
 		<div className="Navbar">
 			<Menu
