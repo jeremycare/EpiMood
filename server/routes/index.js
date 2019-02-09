@@ -22,7 +22,10 @@ router
 	.put(permission.permission(true), userController.update)
 	.delete(permission.permission(true), userController.delete)
 
-router.route('/login').post(userController.login)
+router
+	.route('/login')
+	.post(userController.retrieve)
+	.get(permission.permission(false), userController.login)
 
 router
 	.route('/activities')

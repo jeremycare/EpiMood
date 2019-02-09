@@ -95,7 +95,7 @@ const deleteUser = function(req, res) {
 	)
 }
 
-const login = function(req, res) {
+const retrieve = function(req, res) {
 	User.findOne({ 'user.email': req.params.email }, function(err, user) {
 		if (user) {
 			user.token = jwt.sign({ _id: user._id }, process.env.SECRET_KEY)
@@ -194,13 +194,21 @@ const getUsersId = async emails => {
 	return usersId
 }
 
+const login = (req, res) => {
+	console.log(req.user)
+	return res.status(200).json({
+		user: req.user,
+	})
+}
+
 module.exports = {
 	index: index,
 	new: addUser,
 	update: updateUser,
 	delete: deleteUser,
 	view: getUser,
-	login: login,
 	getUsersId: getUsersId,
 	sendReminders: sendReminders,
+	retrieve: retrieve,
+	login: login,
 }

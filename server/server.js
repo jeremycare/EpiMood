@@ -4,6 +4,7 @@ const mongoose = require('mongoose')
 const jwt = require('jsonwebtoken')
 const fs = require('fs')
 const CronJob = require('cron').CronJob
+const cors = require('cors')
 
 const app = express()
 
@@ -20,6 +21,8 @@ mongoose.connect('mongodb://localhost/epimood')
 
 const db = mongoose.connection
 const port = process.env.PORT || 8080
+
+app.use(cors())
 
 app.get('/', (req, res) => res.send('Hello World with Express'))
 
