@@ -32,11 +32,11 @@ app.listen(port, function() {
 	console.log('Running Epimood on port ' + port)
 })
 
-const userC = require('./controllers/userController')
+const UserController = require('./controllers/userController')
 new CronJob(
 	'0 0 18 * * *',
 	() => {
-		userC.sendReminders()
+		UserController.sendReminders()
 	},
 	null,
 	true,
