@@ -5,14 +5,15 @@ import { tokenActions } from '../actions'
 import NavBarContainer from '../NavBar/NavBarContainer'
 
 const Board = props => {
-	console.log(props)
 	useEffect(() => {
-		return props.dispatch(tokenActions.updateToken(props.match.params.id))
+		return props.dispatch(tokenActions.fetchUser(props.match.params.id))
 	}, [])
+
+	const user = props.state ? props.state.user : undefined
 	return (
 		<div className="Board">
 			<NavBarContainer />
-			<div>{props.state ? props.state.token : ''}</div>
+			<div>{user ? user.email : ''}</div>
 		</div>
 	)
 }

@@ -4,6 +4,10 @@ export default (state = {}, action) => {
 			return {
 				token: action.payload,
 			}
+		case 'RETRIEVE_USER':
+			return {
+				user: action.payload,
+			}
 		default:
 			return state
 	}
