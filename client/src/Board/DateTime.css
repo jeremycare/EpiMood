@@ -12,10 +12,11 @@
   align-items: center;
   text-align: center;
   grid-template-columns: minmax(20px, 1fr) auto minmax(20px, 1fr);
-  grid-gap: 3px;
+  grid-gap: 8px;
   padding-left: 10px;
   padding-right: 10px;
   position: absolute;
+  letter-spacing: 2px;
 }
 
 .Title:before,

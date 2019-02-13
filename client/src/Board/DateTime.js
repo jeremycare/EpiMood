@@ -9,7 +9,7 @@ const DateTime = props => {
 	return (
 		<div className="DateTime">
 			<div className="Title">
-				{diffDate > 0 ? diffDate + ' days ago' : 'Today'}
+				{diffDate > 0 ? diffDate + ' DAYS AGO' : 'TODAY'}
 			</div>
 			<div className="DateBody">
 				<div className="Text-Day">{DateFns.format(date, 'ddd')}</div>
