@@ -16,6 +16,8 @@
   padding-left: 10px;
   padding-right: 10px;
   position: absolute;
+  font-size: 0.8rem;
+  font-weight: bold;
   letter-spacing: 2px;
 }
 
@@ -43,23 +45,23 @@
   position: absolute;
   padding-top: 180px;
   display: block;
-  font-size: 1em;
+  font-size: 1rem;
   font-weight: bold;
 }
 
 .Text-Day {
   display: block;
-  font-size: 1em;
+  font-size: 1rem;
   font-weight: italic;
 }
 
 .Text-Number {
   display: block;
-  font-size: 3.5em;
+  font-size: 2.8rem;
 }
 
 .Text-Month {
   display: block;
-  font-size: 1.25em;
+  font-size: 1.25rem;
   font-weight: bold;
 }
