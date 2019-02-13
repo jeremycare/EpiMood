@@ -16,7 +16,7 @@ class App extends Component {
 					<header className="App-header">
 						<div className="App-body">
 							<Route exact path="/" component={Home} />
-							<Route exact path="/:id" component={BoardContainer} />
+							<Route exact path="/:token" component={BoardContainer} />
 						</div>
 					</header>
 				</div>

@@ -1,7 +1,7 @@
 export const tokenSelector = state => {
-	return state.token
+	return state.token ? state.token.user.token : undefined
 }
 
 export const userSelector = state => {
-	return state.user
+	return state.token ? state.token.user : undefined
 }

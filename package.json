@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/jeremycare/EpiMood#readme",
   "dependencies": {
+    "axios": "^0.18.0",
     "express": "^4.16.4",
     "nodemailer": "^5.0.0",
     "nodemon": "^1.18.9"

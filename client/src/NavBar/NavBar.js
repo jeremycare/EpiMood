@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import { Menu, Icon } from 'antd'
 import { tokenActions } from '../actions'
 
+import './NavBar.css'
+
 const Navbar = props => {
 	const [current, setCurrent] = useState('mail')
 
@@ -9,7 +11,6 @@ const Navbar = props => {
 		setCurrent(e.key)
 		switch (e.key) {
 			case 'mail':
-				props.dispatch(tokenActions.updateToken('test'))
 				break
 			default:
 				return
@@ -22,10 +23,6 @@ const Navbar = props => {
 				selectedKeys={[current]}
 				mode="horizontal"
 			>
-				<Menu.Item key="mail">
-					<Icon type="mail" />
-					New Login Link
-				</Menu.Item>
 				<Menu.Item key="app">
 					<Icon type="retweet" />
 					Refresh

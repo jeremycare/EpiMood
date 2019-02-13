@@ -1,0 +1,64 @@
+.DateTime {
+  min-width: 200px;
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.Title {
+  display: grid;
+  width: 100%;
+  align-items: center;
+  text-align: center;
+  grid-template-columns: minmax(20px, 1fr) auto minmax(20px, 1fr);
+  grid-gap: 3px;
+  padding-left: 10px;
+  padding-right: 10px;
+  position: absolute;
+}
+
+.Title:before,
+.Title:after {
+  content: '';
+  border-top: 2px solid;
+}
+
+.DateBody {
+  border: 2px solid;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex:1;
+  margin: 25px;
+}
+
+.Time {
+  display: grid;
+  width: 100%;
+  align-items: center;
+  text-align: center;
+  position: absolute;
+  padding-top: 180px;
+  display: block;
+  font-size: 1em;
+  font-weight: bold;
+}
+
+.Text-Day {
+  display: block;
+  font-size: 1em;
+  font-weight: italic;
+}
+
+.Text-Number {
+  display: block;
+  font-size: 3.5em;
+}
+
+.Text-Month {
+  display: block;
+  font-size: 1.25em;
+  font-weight: bold;
+}
