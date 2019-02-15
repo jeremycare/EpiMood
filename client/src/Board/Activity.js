@@ -16,7 +16,9 @@ const Activity = props => {
 					</div>
 					<div className="Feedbacks-box">
 						{props.feedbacks
-							? props.feedbacks.map((feedback, i) => <Feedback key={i} />)
+							? props.feedbacks.map((feedback, i) => (
+									<Feedback key={i} feedback={feedback} />
+							  ))
 							: ''}
 					</div>
 				</div>

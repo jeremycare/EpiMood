@@ -4,5 +4,7 @@
 }
 
 .Feedbacks-box {
-  padding: 20px 0px;
+  padding:10px;
+  display:flex;
+  align-items: flex-start;
 }

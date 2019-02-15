@@ -1,0 +1,14 @@
+.FeedBack {
+  border-radius: 50%;
+  display: inline-block;
+  margin:3px;
+}
+
+.FeedBack > img {
+  width: 40px;
+  align-self: flex-start;
+}
+
+.Emoji {
+  border-radius: 50%;
+}
