@@ -8,3 +8,30 @@
   display:flex;
   align-items: flex-start;
 }
+
+.Emoji {
+  border-radius: 50%;
+  display: inline-block;
+  margin:3px;
+}
+
+.Emoji > img {
+  width: 40px;
+  align-self: flex-start;
+}
+
+.FormIcon {
+  width: 60px;
+  padding: 5px;
+}
+
+.RadioGroupBox {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  height: 100px;
+}
+
+.FormIcon.selected {
+  border-bottom: 3px solid lightblue;
+}

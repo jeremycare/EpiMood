@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { Menu, Icon } from 'antd'
-import { tokenActions } from '../actions'
 
 import './NavBar.css'
 

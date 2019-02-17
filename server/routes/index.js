@@ -30,7 +30,7 @@ router
 router
 	.route('/activities')
 	.get(
-		permission.permission(),
+		permission.permission(false),
 		activityMiddleware.filterAdminActivity(),
 		activityControler.index
 	)
@@ -44,6 +44,6 @@ router
 
 router
 	.route('/activities/:activity_id/feedback')
-	.post(permission.permission(), activityControler.feedback)
+	.post(permission.permission(false), activityControler.feedback)
 
 module.exports = router

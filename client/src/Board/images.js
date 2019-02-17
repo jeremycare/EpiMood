@@ -7,3 +7,5 @@ import hearteyes from '../assets/hearteyes.png'
 export const moods = [coldsweat, confused, expressionless, smiling, hearteyes]
 
 export const cloud = require('../assets/think.png')
+
+export const add = require('../assets/add.png')

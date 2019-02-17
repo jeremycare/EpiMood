@@ -16,3 +16,13 @@ export const fetchActivities = token => dispatch => {
 		}
 	)
 }
+
+export const sendFeedback = (activityId, feedback, token) => dispatch => {
+	Axios.post(apiUrl + '/activities/' + activityId + '/feedback', feedback, {
+		headers: {
+			'Api-Key': token,
+		},
+	}).then(response => {
+		dispatch(fetchActivities(token))
+	})
+}
