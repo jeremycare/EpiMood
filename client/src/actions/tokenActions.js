@@ -17,9 +17,7 @@ export const retrieveUser = user => dispatch => {
 }
 
 export const fetchUser = token => dispatch => {
-	console.log(token)
 	Axios.get(apiUrl + '/login', { headers: { 'Api-Key': token } }).then(res => {
-		console.log(res)
 		dispatch(retrieveUser(res.data.user))
 	})
 }

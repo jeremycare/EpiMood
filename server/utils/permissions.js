@@ -3,16 +3,13 @@ const User = require('../models/userModel')
 
 exports.permission = function(admin) {
 	return (req, res, next) => {
-		console.log('permission')
 		const apiKey = req.get('Api-Key')
-		console.log(apiKey)
 		if (apiKey === undefined) {
 			res.status(401).end()
 			return
 		} else {
 			try {
 				const decoded = jwt.verify(apiKey, process.env.SECRET_KEY)
-				console.log('decoded ', decoded)
 				if (decoded === null) {
 					res.status(401).end()
 					return

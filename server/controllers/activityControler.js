@@ -4,7 +4,6 @@ const User = require('../models/userModel')
 const UserController = require('../controllers/userController')
 
 const index = (req, res) => {
-	console.log('index', res)
 	res.status(200).json({
 		message: 'Activities retrieved successfully',
 		data: req.activities,

@@ -4,4 +4,4 @@ node_modules
 server/node_modules
 client/node_modules
 server/utils/secret
-
+server/package.json

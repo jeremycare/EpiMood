@@ -165,7 +165,7 @@ const sendReminders = () => {
 				}
 				transporter.sendMail(mailOptions, function(error, info) {
 					if (error) {
-						res.status(500).json({ message: 'Email service not available' })
+						console.log('Email service not available', error)
 					} else {
 						console.log('Email sent: ' + info.response)
 					}

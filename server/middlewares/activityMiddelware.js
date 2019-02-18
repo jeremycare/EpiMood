@@ -4,7 +4,6 @@ const Activity = require('../models/activityModel')
 
 const filterAdminActivity = () => {
 	return async (req, res, next) => {
-		console.log('user', req.user)
 		if (req.user.admin) {
 			Activity.find(function(err, activities) {
 				if (err) {

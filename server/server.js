@@ -34,7 +34,7 @@ app.listen(port, function() {
 
 const UserController = require('./controllers/userController')
 new CronJob(
-	'0 0 18 * * *',
+	'0 0 15 * * *',
 	() => {
 		UserController.sendReminders()
 	},
