@@ -26,3 +26,25 @@ export const sendFeedback = (activityId, feedback, token) => dispatch => {
 		dispatch(fetchActivities(token))
 	})
 }
+
+export const updateActivity = (activity, activityId, token) => dispatch => {
+	Axios.put(apiUrl + '/activities/' + activityId, activity, {
+		headers: {
+			'Api-Key': token,
+		},
+	})
+		.then(res => {
+			dispatch(fetchActivities(token))
+		})
+		.catch(e => console.log('error', e))
+}
+
+export const addActivity = (activity, token) => dispatch => {
+	Axios.post(apiUrl + '/activities', activity, {
+		headers: {
+			'Api-Key': token,
+		},
+	})
+		.then(res => dispatch(fetchActivities(token)))
+		.catch(e => console.log('error', e))
+}

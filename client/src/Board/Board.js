@@ -5,8 +5,10 @@ import { Timeline } from 'antd'
 import { tokenActions, activitiesActions } from '../actions'
 import NavBarContainer from '../NavBar/NavBarContainer'
 import ActivityContainer from './ActivityContainer'
+import AdminBoard from './AdminBoard'
 
 import './Board.css'
+import AdminBoardContainer from './AdminBoardContainer'
 
 const Board = props => {
 	useEffect(() => {
@@ -15,23 +17,27 @@ const Board = props => {
 	}, [])
 
 	const activities = props.activities
+	console.log(props)
 	return (
 		<div className="Board">
-			<NavBarContainer />
-			<Timeline pending>
-				{activities
-					? activities.map((activity, i) => (
-							<ActivityContainer
-								key={i}
-								title={activity.name}
-								date={activity.date}
-								feedbacks={activity.feedbacks}
-								voted={activity.voted}
-								id={activity._id}
-							/>
-					  ))
-					: ''}
-			</Timeline>
+			{props.user && !props.user.admin ? (
+				<Timeline pending>
+					{activities
+						? activities.map((activity, i) => (
+								<ActivityContainer
+									key={i}
+									title={activity.name}
+									date={activity.date}
+									feedbacks={activity.feedbacks}
+									voted={activity.voted}
+									id={activity._id}
+								/>
+						  ))
+						: ''}
+				</Timeline>
+			) : (
+				<AdminBoardContainer user={props.user} activities={props.activities} />
+			)}
 		</div>
 	)
 }

@@ -5,14 +5,16 @@ const Activity = require('../models/activityModel')
 const filterAdminActivity = () => {
 	return async (req, res, next) => {
 		if (req.user.admin) {
-			Activity.find(function(err, activities) {
-				if (err) {
-					res.status(500).json(err)
-					return
-				}
-				req.activities = activities
-				next()
-			})
+			Activity.find({})
+				.populate('users.user')
+				.exec(function(err, activities) {
+					if (err) {
+						res.status(500).json(err)
+						return
+					}
+					req.activities = activities
+					next()
+				})
 		} else {
 			const activities = await Activity.find(
 				{

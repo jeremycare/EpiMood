@@ -1,0 +1,19 @@
+.ant-table-row > td {
+  text-align: center;
+}
+
+.TitleImage {
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  margin:3px;
+}
+
+.TitleImage > img {
+  width: 40px;
+  align-self: center;
+}
+
+.TitleColumn {
+  text-align: center;
+}
